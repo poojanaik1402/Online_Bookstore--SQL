@@ -43,8 +43,4 @@ A SQL-based **Online Bookstore** project using **Oracle SQL**, featuring table c
 
 ---
 
-## 👩‍💻 Author
 
-**Pooja Naik**  
-Aspiring Data Analyst | Skilled in SQL & Power BI  
-🌐 [GitHub Profile](https://github.com/poojanaik1402)
