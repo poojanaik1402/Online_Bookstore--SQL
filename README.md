@@ -42,5 +42,8 @@ A SQL-based **Online Bookstore** project using **Oracle SQL**, featuring table c
 3. Use the `.csv` files to understand the structure or for external loading.
 
 ---
+## 📌 License
+
+This project is intended for **educational and portfolio use only**. Do not use for commercial purposes.
 
 
