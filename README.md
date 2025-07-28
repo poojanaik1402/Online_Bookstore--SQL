@@ -68,21 +68,23 @@ SELECT SUM(Total_Amount) AS Total_Revenue FROM Orders;
 
 -- Most Frequently Ordered Book
 SELECT * FROM (
-  SELECT b.title, COUNT(*) AS Order_Count
-  FROM Orders o
-  JOIN Books b ON o.Book_ID = b.Book_ID
-  GROUP BY b.title
-  ORDER BY Order_Count DESC
-) WHERE ROWNUM = 1;
-
+              SELECT o.Book_id, b.title, COUNT(o.order_id) AS Order_Count
+              FROM Orders o
+              JOIN Books b ON o.book_id = b.book_id
+              GROUP BY o.book_id, b.title
+              ORDER BY COUNT(o.order_id) DESC) 
+              WHERE ROWNUM = 1;
 -- Remaining Stock After Orders
 SELECT 
-  b.Book_ID, b.Title, b.Stock, 
-  NVL(SUM(o.Quantity), 0) AS Ordered, 
-  b.Stock - NVL(SUM(o.Quantity), 0) AS Remaining
-FROM Books b
-LEFT JOIN Orders o ON b.Book_ID = o.Book_ID
-GROUP BY b.Book_ID, b.Title, b.Stock;
+    b.book_id, 
+    b.title, 
+    b.stock, 
+    NVL(SUM(o.quantity), 0) AS order_quantity,
+    b.stock - NVL(SUM(o.quantity), 0) AS remaining_quantity
+    FROM books b
+    LEFT JOIN orders o ON b.book_id = o.book_id
+    GROUP BY b.book_id, b.title, b.stock
+    ORDER BY b.book_id;
 
 
 
